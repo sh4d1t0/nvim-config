@@ -23,6 +23,8 @@ return packer.startup(function(use)
 	use({ -- Themes
 		"marko-cerovac/material.nvim",
 		"EdenEast/nightfox.nvim",
+		"rebelot/kanagawa.nvim",
+		"folke/tokyonight.nvim",
 		config = conf("colors"),
 	})
 	use({ -- Treesiter
@@ -63,11 +65,15 @@ return packer.startup(function(use)
 		"sunjon/shade.nvim",
 		config = conf("shade"),
 	})
-	use({ --Bufferline Tabs
+	use({ -- Bufferline Tabs
 		"akinsho/bufferline.nvim",
 		config = conf("bufferline"),
 	})
-	use({ --Notifications
+	use({ -- Indent Blankline
+		"lukas-reineke/indent-blankline.nvim",
+		config = conf("indent-blankline"),
+	})
+	use({ -- Notifications
 		"rcarriga/nvim-notify",
 	})
 	use({ -- Lsp

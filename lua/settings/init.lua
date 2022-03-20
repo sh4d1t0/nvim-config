@@ -12,6 +12,8 @@ set.ignorecase = true -- Ignorecase ins search pattern
 set.smartcase = true -- Override the 'ignorecase' option if the search pattern contains upper case characters
 set.autoindent = true -- Autoindent
 set.encoding = "utf-8"
+set.list = true
+--set.listchars:append("eol:↴")
 
 -- Backups --
 set.backup = true -- Enable
@@ -44,8 +46,8 @@ set.ruler = true
 set.signcolumn = "yes"
 
 -- Theme --
-vim.g.material_style = "deep ocean"
-vim.cmd("colorscheme material")
+-- vim.g.material_style = "deep ocean"
+vim.cmd("colorscheme kanagawa")
 
 -- Notifications --
 --vim.notify = require("notify")

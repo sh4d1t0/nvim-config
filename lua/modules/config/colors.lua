@@ -1,11 +1,30 @@
 return function()
+	local kanagawa = require("kanawaga")
 	local material = require("material")
 	local nightfox = require("nightfox")
 
-	if not nightfox or not material then
+	if not kanagawa or not nightfox or not material then
 		print("Colorschemes not found")
 		return
 	end
+
+	-- kanagawa Config --
+	kanagawa.setup({
+		undercurl = true, -- enable undercurls
+		commentStyle = "italic",
+		functionStyle = "NONE",
+		keywordStyle = "italic",
+		statementStyle = "bold",
+		typeStyle = "NONE",
+		variablebuiltinStyle = "italic",
+		specialReturn = true, -- special highlight for the return keyword
+		specialException = true, -- special highlight for exception handling keywords
+		transparent = true, -- do not set background color
+		dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+		globalStatus = false, -- adjust window separators highlight for laststatus=3
+		colors = {},
+		overrides = {},
+	})
 
 	-- Nightfox Config --
 	nightfox.setup({})
