@@ -67,6 +67,7 @@ return packer.startup(function(use)
 	})
 	use({ -- Bufferline Tabs
 		"akinsho/bufferline.nvim",
+		tag = "v2.*",
 		config = conf("bufferline"),
 	})
 	use({ -- Indent Blankline
