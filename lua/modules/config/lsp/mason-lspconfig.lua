@@ -1,7 +1,7 @@
 return function()
 	local masonlspconfig = require("mason-lspconfig")
 	if masonlspconfig then
-		print("manson-lspconfig was not found")
+		print("mason-lspconfig was not found")
 		return
 	end
 

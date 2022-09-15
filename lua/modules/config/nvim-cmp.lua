@@ -17,7 +17,8 @@ return function()
 		},
 		formatting = {
 			format = lspkind.cmp_format({
-				mode = "symbol_text", -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+        mode = "symbol_text", -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 				preset = "codicons", -- https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf
 				-- maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 				symbol_map = {
@@ -62,6 +63,7 @@ return function()
 		sources = cmp.config.sources({
 			{ name = "nvim_lua" },
 			{ name = "nvim_lsp" },
+      { name = "buffer" },
 			{ name = "luasnip" },
 			{ name = "path" },
 			{ name = "emoji" },

@@ -30,13 +30,26 @@ M.setup = function()
     },
   }
 
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = 'rounded',
-  })
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+      border = 'rounded',
+    }
+  )
 
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = 'rounded',
-  })
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, {
+      border = 'rounded',
+    }
+  )
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      underline = true,
+      update_in_insert = false,
+      virtual_text = { spacing = 4, prefix = "●" },
+      severity_sort = true,
+    }
+  )
 end
 
 function M.on_attach(client, bufnr)
@@ -67,9 +80,9 @@ function M.on_attach(client, bufnr)
     illuminate.on_attach(client)
   end
 
-  if client.name ~= 'null-ls' then
-    client.resolved_capabilities.document_formatting = false
-  end
+  --if client.name ~= 'null-ls' then
+  --  client.resolved_capabilities.document_formatting = false
+  --end
 
   if client.name == 'tsserver' then
     local ts_utils = require 'nvim-lsp-ts-utils'
