@@ -7,7 +7,7 @@ return function()
 
 	require("modules.config.lsp.handlers").setup()
 	require("modules.config.lsp.handlers").enable_format_on_save()
-	require("modules.config.lsp.null-ls").setup()
+	--require("modules.config.lsp.null-ls").setup()
 	require("modules.config.lsp.lsp-colors").setup()
 	require("modules.config.lsp.saga").setup()
 
@@ -24,15 +24,21 @@ return function()
 		filetypes = {
 			"html",
 			"css",
+			"less",
+			"javascriptreact",
 			"scss",
 			"sass",
-			"less",
+			"typescriptreact",
 		},
 	})
 
 	lspconfig.eslint.setup({
 		cmd = { "vscode-eslint-language-server", "--stdio" },
-		filetypes = { "javascript", "javascriptreact", "javascript.jsx" },
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+		},
 	})
 
 	--Enable (broadcasting) snippet capability for completion
