@@ -15,14 +15,14 @@ M.setup = function()
 			--diagnostic.eslint,
 			diagnostic.stylelint,
 			diagnostic.vint,
-			diagnostic.zsh,
+			--diagnostic.zsh,
 			format.phpcsfixer,
 			format.prettier.with({
 				prefer_local = "node_modules/.bin",
 				-- milliseconds to preformat on save
 				timeout = 10000,
 			}),
-			format.rustywind,
+			--format.rustywind,
 			format.stylua,
 		},
 	})

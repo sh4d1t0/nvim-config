@@ -29,7 +29,9 @@ return packer.startup(function(use)
 	})
 	use({ -- Treesiter
 		"nvim-treesitter/nvim-treesitter",
-		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+		run = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
 		config = conf("nvim-treesitter"),
 		requires = {
 			"nvim-treesitter/playground",
@@ -77,11 +79,19 @@ return packer.startup(function(use)
 	use({ -- Notifications
 		"rcarriga/nvim-notify",
 	})
+	use({ -- Lsp Stuff
+		"williamboman/mason.nvim",
+		config = conf("mason"),
+	})
+	use({ -- mason and lspconfig bridge
+		"williamboman/mason-lspconfig.nvim",
+		config = conf("lsp/mason-lspconfig"),
+	})
 	use({ -- Lsp
 		"neovim/nvim-lspconfig",
 		config = conf("lsp"),
 		requires = {
-			"williamboman/nvim-lsp-installer", -- LSP Autoinstaller
+			--"williamboman/nvim-lsp-installer", -- LSP Autoinstaller
 			"b0o/schemastore.nvim", -- JSON schema for jsonls
 			"jose-elias-alvarez/null-ls.nvim", -- Format
 			"ray-x/lsp_signature.nvim",

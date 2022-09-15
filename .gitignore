@@ -1,4 +1,7 @@
 plugin
 
+# IntelliJ
+.idea
+
 # Mac Files
 .DS_Store
