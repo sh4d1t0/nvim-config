@@ -101,6 +101,10 @@ return packer.startup(function(use)
 			"folke/lsp-colors.nvim",
 		},
 	})
+	use({ -- Prettier
+		"MunifTanjim/prettier.nvim",
+		config = conf("prettier"),
+	})
 	use({ -- Trouble
 		"folke/trouble.nvim",
 	})
@@ -123,7 +127,10 @@ return packer.startup(function(use)
 			},
 		},
 	})
-
+	use({ -- GitSigns
+		"lewis6991/gitsigns.nvim",
+		config = conf("gitsigns"),
+	})
 	if packer_bootstrap then
 		packer.sync()
 	end
