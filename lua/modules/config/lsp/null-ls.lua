@@ -14,13 +14,15 @@ M.setup = function()
 
 	null_ls.setup({
 		sources = {
-			--diagnostic.eslint,
+			--diagnostic.eslint_d.with({
+			--	diagnostics_format = "[eslint] #{m}\n(#{c})",
+			--}),
 			diagnostic.stylelint,
 			--diagnostic.vint,
 			format.phpcsfixer,
 			--format.prettier.with({
+			--	filetypes = { "javascript", "javascriptreact", "typescriptreact" }, -- fix this
 			--	prefer_local = "node_modules/.bin",
-			--	-- milliseconds to preformat on save
 			--	timeout = 10000,
 			--}),
 			format.stylua,
