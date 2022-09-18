@@ -17,7 +17,6 @@ return function()
 			"kotlin_language_server",
 			"sumneko_lua",
 			"stylelint_lsp",
-			"stylua",
 			"tailwindcss",
 			"tsserver",
 			"volar",
