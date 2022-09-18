@@ -63,10 +63,6 @@ return packer.startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		config = conf("lualine"),
 	})
-	use({ -- Shade
-		"sunjon/shade.nvim",
-		config = conf("shade"),
-	})
 	use({ -- Bufferline Tabs
 		"akinsho/bufferline.nvim",
 		tag = "v2.*",
