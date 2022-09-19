@@ -104,6 +104,15 @@ return function()
     capabilities = capabilities,
   })
 
+  lspconfig.flow.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+  })
+
+  lspconfig.sourcekit.setup({
+    on_attach = on_attach,
+  })
+
   lspconfig.sumneko_lua.setup({
     on_attach = on_attach,
     settings = {
@@ -121,6 +130,8 @@ return function()
       },
     },
   })
+
+  lspconfig.tailwindcss.setup({})
 
   lspconfig.tsserver.setup({
     on_attach = on_attach,
