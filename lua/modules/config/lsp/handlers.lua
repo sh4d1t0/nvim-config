@@ -30,76 +30,21 @@ M.setup = function()
     },
   }
 
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-    vim.lsp.handlers.hover, {
-      border = 'rounded',
-    }
-  )
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = 'rounded',
+  })
 
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers.signature_help, {
-      border = 'rounded',
-    }
-  )
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = 'rounded',
+  })
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = true,
-      update_in_insert = false,
-      virtual_text = { spacing = 4, prefix = "●" },
-      severity_sort = true,
-    }
-  )
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4, prefix = "●" },
+    severity_sort = true,
+  })
 end
-
-function M.on_attach(client, bufnr)
-  local function map(key, cmd)
-    local opts = { noremap = true, silent = true }
-    vim.api.nvim_buf_set_keymap(0, 'n', key, '<cmd>lua ' .. cmd .. '<CR>', opts)
-  end
-
-  map('K', 'vim.lsp.buf.hover()')
-  map('gd', 'vim.lsp.buf.definition()')
-  map('gD', 'vim.lsp.buf.declaration()')
-  map('gi', 'vim.lsp.buf.implementation()')
-  map('gr', 'vim.lsp.buf.references()')
-  map('<space>ca', 'vim.lsp.buf.code_action()')
-  map('<space>gh', 'vim.lsp.buf.signature_help()')
-  map('<space>rn', 'vim.lsp.buf.rename()')
-  map('[d', 'vim.diagnostic.goto_prev()')
-  map(']d', 'vim.diagnostic.goto_next()')
-  map('<space>ld', 'vim.diagnostic.open_float()')
-
-  local lsp_signature = require 'lsp_signature'
-  if lsp_signature then
-    lsp_signature.on_attach()
-  end
-
-  local illuminate = require 'illuminate'
-  if illuminate then
-    illuminate.on_attach(client)
-  end
-
-  --if client.name ~= 'null-ls' then
-  --  client.resolved_capabilities.document_formatting = false
-  --end
-
-  if client.name == 'tsserver' then
-    local ts_utils = require 'nvim-lsp-ts-utils'
-    if ts_utils then
-      ts_utils.setup {}
-      ts_utils.setup_client(client)
-    end
-  end
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-local cmp_nvim_lsp = require 'cmp_nvim_lsp'
-if cmp_nvim_lsp then
-  capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-end
-M.capabilities = capabilities
 
 function M.enable_format_on_save()
   vim.cmd [[

@@ -4,7 +4,7 @@ return function()
     print("mason not found")
     return
   end
-  
+
   mason.setup({
     ui = {
       icons = {
