@@ -45,7 +45,10 @@ return packer.startup(function(use)
   use({ -- Finder
     "nvim-telescope/telescope.nvim",
     config = conf("telescope"),
-    requires = { { "nvim-lua/plenary.nvim" } },
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+    },
   })
   use({ -- File explorer
     "kyazdani42/nvim-tree.lua",
