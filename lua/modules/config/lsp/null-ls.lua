@@ -14,6 +14,7 @@ return function()
     sources = {
       diagnostic.stylelint,
       format.phpcsfixer,
+      format.blade_formatter,
     },
     on_attach = function(client, bufnr)
       if client.server_capabilities.documentFormattingProvider then
