@@ -130,6 +130,10 @@ return packer.startup(function(use)
     "lewis6991/gitsigns.nvim",
     config = conf("gitsigns"),
   })
+  use({ -- Git
+    'dinhhuy258/git.nvim',
+    config = conf("nvim-git"),
+  })
   if packer_bootstrap then
     packer.sync()
   end
