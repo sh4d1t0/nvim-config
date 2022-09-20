@@ -50,8 +50,8 @@ set.signcolumn = "yes"
 vim.cmd("colorscheme kanagawa")
 
 -- Notifications --
---vim.notify = require("notify")
+vim.notify = require("notify")
 if not vim.notify then
-	print("notify not found")
-	return
+  print("notify not found")
+  return
 end
