@@ -1,6 +1,4 @@
-local M = {}
-
-M.setup = function()
+return function()
   local null_ls = require("null-ls")
   if not null_ls then
     print("null-ls not found")
@@ -12,7 +10,7 @@ M.setup = function()
   local format = null_ls.builtins.formatting
   local diagnostic = null_ls.builtins.diagnostics
 
-  null_ls.setup({
+  null_ls.setup {
     sources = {
       diagnostic.stylelint,
       format.phpcsfixer,
@@ -29,7 +27,5 @@ M.setup = function()
         })
       end
     end,
-  })
+  }
 end
-
-return M

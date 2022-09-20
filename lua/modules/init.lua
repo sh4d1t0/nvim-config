@@ -91,13 +91,16 @@ return packer.startup(function(use)
     config = conf("lsp"),
     requires = {
       "b0o/schemastore.nvim", -- JSON schema for jsonls
-      "jose-elias-alvarez/null-ls.nvim", -- Format
       "ray-x/lsp_signature.nvim",
       "jose-elias-alvarez/nvim-lsp-ts-utils",
       "RRethy/vim-illuminate",
       "tami5/lspsaga.nvim",
       "folke/lsp-colors.nvim",
     },
+  })
+  use({
+    "jose-elias-alvarez/null-ls.nvim", -- Format
+    config = conf("lsp/null-ls"),
   })
   use({ -- Prettier
     "MunifTanjim/prettier.nvim",

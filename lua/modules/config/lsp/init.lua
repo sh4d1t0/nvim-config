@@ -5,9 +5,6 @@ return function()
     return
   end
 
-  require("modules.config.lsp.handlers").setup()
-  require("modules.config.lsp.handlers").enable_format_on_save()
-  require("modules.config.lsp.null-ls").setup()
   require("modules.config.lsp.lsp-colors").setup()
   require("modules.config.lsp.saga").setup()
 
@@ -101,6 +98,9 @@ return function()
       "javascriptreact",
       "javascript.jsx",
     },
+    settings = {
+      format = true,
+    },
     capabilities = capabilities,
   })
 
@@ -136,7 +136,33 @@ return function()
   lspconfig.tsserver.setup({
     on_attach = on_attach,
     cmd = { "typescript-language-server", "--stdio" },
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
     capabilities = capabilities,
+  })
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4, prefix = "●" },
+    severity_sort = true,
+  }
+  )
+
+  -- Diagnostic symbols in the sign column (gutter)
+  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+  end
+
+  vim.diagnostic.config({
+    virtual_text = {
+      prefix = '●'
+    },
+    update_in_insert = true,
+    float = {
+      source = "always", -- Or "if_many"
+    },
   })
 end
