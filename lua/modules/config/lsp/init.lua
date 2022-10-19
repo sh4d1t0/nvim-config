@@ -63,7 +63,12 @@ return function()
   }
 
   -- Set up completion using nvim_cmp with LSP source
-  local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+  local lsp_flags = {
+    -- This is the default in Nvim 0.7+
+    debounce_text_changes = 150,
+	}
 
   lspconfig.angularls.setup({
     on_attach = on_attach,
@@ -114,6 +119,12 @@ return function()
     cmd = { "intelephense", "--stdio" },
     filetypes = { "php" },
     capabilities = capabilities,
+  })
+
+  lspconfig.pyright.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = lsp_flags,
   })
 
   lspconfig.sourcekit.setup({
