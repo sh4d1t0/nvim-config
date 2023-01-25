@@ -137,8 +137,15 @@ return packer.startup(function(use)
     config = conf("gitsigns"),
   })
   use({ -- Git
-    'dinhhuy258/git.nvim',
+    "dinhhuy258/git.nvim",
     config = conf("nvim-git"),
+  })
+  use({ -- Rest
+    "rest-nvim/rest.nvim",
+    config = conf("nvim-rest"),
+    requires = {
+      "nvim-lua/plenary.nvim"
+    },
   })
   if packer_bootstrap then
     packer.sync()

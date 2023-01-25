@@ -13,6 +13,7 @@ return function()
       "dart",
       "graphql",
       "html",
+      "http",
       "javascript",
       "json",
       "kotlin",

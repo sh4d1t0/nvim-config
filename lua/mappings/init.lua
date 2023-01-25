@@ -70,3 +70,8 @@ map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<CR>", opts)
 map("n", "<leader>xq", "<cmd>Trouble quickfix<CR>", opts)
 map("n", "xlr", "<cmd>Trouble lsp_references<CR>", opts)
 map("n", "xli", "<cmd>Trouble lsp_implementations<CR>", opts)
+
+-- Rest
+map("n", "<leader>rn", "<Plug>RestNvim", { nowait = true })
+map("n", "<leader>rl", "<Plug>RestNvimLast", { nowait = true })
+map("n", "<leader>rp", "<Plug>RestNvimPreview", { nowait = true })
