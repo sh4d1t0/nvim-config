@@ -44,6 +44,7 @@ return packer.startup(function(use)
   })
   use({ -- Finder
     "nvim-telescope/telescope.nvim",
+    tag = '0.1.2',
     config = conf("telescope"),
     requires = {
       "nvim-lua/plenary.nvim",
@@ -51,11 +52,11 @@ return packer.startup(function(use)
     },
   })
   use({ -- File explorer
-    "kyazdani42/nvim-tree.lua",
+    'nvim-tree/nvim-tree.lua',
     config = conf("nvim-tree"),
   })
   use({ -- Icons
-    "kyazdani42/nvim-web-devicons",
+     'nvim-tree/nvim-web-devicons',
     config = conf("nvim-web-devicons"),
   })
   use({ -- colorizer
@@ -81,10 +82,9 @@ return packer.startup(function(use)
   use({ -- Lsp Stuff
     "williamboman/mason.nvim",
     config = conf("mason"),
-  })
-  use({ -- mason and lspconfig bridge
-    "williamboman/mason-lspconfig.nvim",
-    config = conf("lsp/mason-lspconfig"),
+    requires = {
+      "williamboman/mason-lspconfig.nvim",
+    }
   })
   use({ -- Lsp
     "neovim/nvim-lspconfig",
