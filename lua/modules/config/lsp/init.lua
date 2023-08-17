@@ -82,7 +82,7 @@ return function()
 
   lspconfig.emmet_ls.setup({
     on_attach = on_attach,
-    cmd = { "ls_emmet", "--stdio" },
+    cmd = { "emmet-ls", "--stdio" },
     filetypes = {
       "html",
       "css",
