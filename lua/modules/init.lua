@@ -92,7 +92,8 @@ return require('packer').startup(function(use)
   -- Bufferline Tabs
   use {
     'akinsho/bufferline.nvim',
-    tag = 'v2.*',
+    tag = '*',
+    requires = {'nvim-tree/nvim-web-devicons'},
     config = conf('bufferline')
   }
 
@@ -186,6 +187,18 @@ return require('packer').startup(function(use)
     config = conf('nvim-rest'),
     requires = {'nvim-lua/plenary.nvim'}
   }
+
+  -- Alpha nvim
+  use {
+    'goolord/alpha-nvim',
+    requires = {'nvim-tree/nvim-web-devicons'},
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+  }
+
+  -- nvim-visual-multi
+  use 'mg979/vim-visual-multi'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
