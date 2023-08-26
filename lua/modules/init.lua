@@ -220,6 +220,11 @@ return require('packer').startup(function(use)
     config = conf('symbols-outline')
   }
 
+  use {
+    'folke/todo-comments.nvim',
+    config = conf('todo-comments')
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
