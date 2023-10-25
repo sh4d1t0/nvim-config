@@ -1,15 +1,27 @@
 return function()
-	local indentBlankline = require("indent_blankline")
+  local indentBlankline = require("ibl")
 
-	if not indentBlankline then
-		print("Ident Blankline not found")
-		return
-	end
+  if not indentBlankline then
+    print("Ident Blankline not found")
+    return
+  end
 
-	indentBlankline.setup({
-		-- for example, context is off by default, use this to turn it on
-		space_char_blankline = " ",
-		show_current_context = true,
-		show_current_context_start = true,
-	})
+  local highlight = {
+    "CursorColumn",
+    "Whitespace",
+  }
+
+  indentBlankline.setup({
+    indent = {
+      highlight = highlight,
+      char = "",
+    },
+    whitespace = {
+      highlight = highlight,
+      remove_blankline_trail = true,
+    },
+    scope = {
+      enabled = false,
+    }
+  })
 end

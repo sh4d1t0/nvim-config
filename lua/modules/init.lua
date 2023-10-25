@@ -141,7 +141,7 @@ return require('packer').startup(function(use)
 
   --Trouble
   use 'folke/trouble.nvim'
-  
+
   -- Autocompletion plugin
   use {
     'hrsh7th/nvim-cmp',
